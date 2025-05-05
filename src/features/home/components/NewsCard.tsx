@@ -1,7 +1,7 @@
 import { ExternalLink } from 'lucide-react';
 import React from 'react';
 
-import { NewsItem } from '../types/news';
+import { NewsItem } from '../../../types/news';
 
 interface NewsCardProps {
   news: NewsItem;

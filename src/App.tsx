@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { Loader2, Newspaper } from 'lucide-react';
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import { NewsCard } from './components/NewsCard';
 import { NewsItem } from './types/news';
@@ -13,15 +13,15 @@ function App() {
   useEffect(() => {
     const fetchNews = async () => {
       const headers = {
-        'X-Api-Key': import.meta.env.VITE_NEWS_API_KEY,
-        'User-Agent': 'React-News/1.0'
+        'x-api-key': import.meta.env.VITE_NEWS_API_KEY,
       }
       try {
-        const response = await axios.get(import.meta.env.VITE_NEWS_BASE_URL + '/news', {
+        const response = await axios.get(import.meta.env.VITE_NEWS_BASE_URL, {
           headers,
           params: { language: 'en' }
         });
-        setNews(response.data.data);
+
+        setNews(response.data.articles);
         setLoading(false);
       } catch (err) {
         setError('Failed to fetch news. Please try again later.');
@@ -62,7 +62,7 @@ function App() {
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {news.map((item) => (
-            <NewsCard key={item.id} news={item} />
+            <NewsCard key={item.link} news={item} />
           ))}
         </div>
       </div>

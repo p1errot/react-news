@@ -1,7 +1,9 @@
-import { ExternalLink } from 'lucide-react';
+import './styles.scss';
+
+import { Bookmark, ExternalLink } from 'lucide-react';
 import React from 'react';
 
-import { NewsItem } from '../../../types/news';
+import { NewsItem } from '../../../../types/news';
 
 interface NewsCardProps {
   news: NewsItem;
@@ -10,11 +12,16 @@ interface NewsCardProps {
 export const NewsCard: React.FC<NewsCardProps> = ({ news }) => {
   return (
     <div className="bg-white rounded-lg shadow-md overflow-hidden flex flex-col">
+      <div className="w-full h-48 object-cover relative">
       <img
         src={news.images?.[0] ?? `https://picsum.photos/id/885/600/400`}
         alt={news.title}
         className="w-full h-48 object-cover"
-      />
+        />
+        <button className={`top-2 right-2 absolute bookmark-icon${news.bookmarked ? ' bookmarked' : ''}`}>
+          <Bookmark color={news.bookmarked ? 'red' : 'gray'} fill={news.bookmarked ? 'red' : 'transparent'} />
+        </button>
+      </div>
       <div className="p-6 flex flex-col grow">
         <h2 className="text-xl font-semibold mb-2 text-gray-800">{news.title}</h2>
         <p className="text-gray-600 mb-4 grow">{news.summary}</p>

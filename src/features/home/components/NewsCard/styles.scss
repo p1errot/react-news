@@ -1,0 +1,18 @@
+$accent-red: theme('colors.layout.accent-red');
+
+.bookmark-icon {
+  cursor: pointer;
+  transition: color 0.2s;
+
+  svg {
+    transition: color 0.5s, fill 0.5s;
+  }
+
+  &:hover {
+    svg {
+      color: $accent-red;
+      fill: $accent-red;
+      stroke: $accent-red;
+    }
+  }
+}

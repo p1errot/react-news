@@ -23,7 +23,7 @@ function Home () {
 
         setNews(response.data.articles);
         setLoading(false);
-      } catch (err) {
+      } catch {
         setError('Failed to fetch news. Please try again later.');
         setLoading(false);
       }
